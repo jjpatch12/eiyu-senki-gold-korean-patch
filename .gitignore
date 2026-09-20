@@ -1,0 +1,6 @@
+*.zip
+*.delta.gz
+*.ttf
+*.dll
+*.exe
+.patch/

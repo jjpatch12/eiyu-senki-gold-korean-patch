@@ -1,0 +1,16 @@
+{
+  "files": 39,
+  "fonts": 8,
+  "checks": [
+    "full delta reconstruction",
+    "all target SHA256",
+    "verify-only leaves files unchanged",
+    "injected failure rollback",
+    "full install with sandboxed font registration",
+    "already-patched verification",
+    "restore baseline",
+    "reject unexpected source",
+    "save and name-map preserved"
+  ],
+  "passed": true
+}

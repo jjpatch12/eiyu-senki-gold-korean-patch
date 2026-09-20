@@ -1,0 +1,359 @@
+﻿{
+  "version": "0.9.0",
+  "files": [
+    {
+      "path": "AUGEvent/Define.dat",
+      "source_sha256": "171f803029f8cce10610f16a7e7fc02aff8f8fb1de2117495f6eeaee6140db97",
+      "target_sha256": "7e3101fc060b487d403337af3f5f59f426c8eac179e3bf57098c479d5bc44929",
+      "size": 34919,
+      "payload": "data/000.delta.gz",
+      "payload_sha256": "e33bdeb77c6a6909c22d296b86bab14abd07734674b4b08a1e92748ecf53acc0"
+    },
+    {
+      "path": "AUGEvent/Script.dat",
+      "source_sha256": "abc2f2dc35caf5cff2a48ca3aa9a61a15fe230ea3beb7ca7df2533fd67bd92c2",
+      "target_sha256": "1eaaff65aaeb33cbfedb5e98caeaa0139ef44d2ab6787e6d32254bef3db022c3",
+      "size": 2392566,
+      "payload": "data/001.delta.gz",
+      "payload_sha256": "2111ee691b81ae7e2536fdb9baa33a1f163870df19bb5c329d6f69d7609ee85a"
+    },
+    {
+      "path": "AUGGame/Base/Attribute.dat",
+      "source_sha256": "f0a41bc546d6de9e6ef67f068eeed1e9deb31935b4f9fa6d254b188f08c90dda",
+      "target_sha256": "5b598b8018529823b0c812852d4d3e67b5c18acea66ce87330d8e76d0a060d9c",
+      "size": 53549,
+      "payload": "data/002.delta.gz",
+      "payload_sha256": "70494d687ab0306c35dfac591aba116a7b3fd16188e6d3127639d4805ec91c2a"
+    },
+    {
+      "path": "AUGGame/Battle/Medal.dat",
+      "source_sha256": "103b96f03dca017c6b56590754631bf711ab5d437f3ef70f5b81f76eca998f5f",
+      "target_sha256": "3868b053111170e3c8480533de0fd6f11df584edfb3d60319611f22fffab130b",
+      "size": 1395747,
+      "payload": "data/003.delta.gz",
+      "payload_sha256": "518902d208459f3e8e2d9c92567c59bc3a2c840109d9f341c38c200adce8b9cc"
+    },
+    {
+      "path": "AUGGame/BattleSet.dat",
+      "source_sha256": "3de724db73fffac01f4456be6ca18fcfd6e42e8ebb43cee1696a9c03a0cc2fe3",
+      "target_sha256": "6451a625eadf5c8f1c893d714df86dc42bdeeadddba4807e1eeda8bdef43f3c4",
+      "size": 147560,
+      "payload": "data/004.delta.gz",
+      "payload_sha256": "ab818fa873c39619dbbef29b475c876ca57a6a5919a70e8c90b47221d9b0f87d"
+    },
+    {
+      "path": "AUGGame/Define.dat",
+      "source_sha256": "9074038d8b0735331061decbcb0494db510361905a829e8ec43b90e8ad50d770",
+      "target_sha256": "b5d14df738e370b5e2434498843efdd37f3f8048b4664168050fce7e3d66be0c",
+      "size": 4272920,
+      "payload": "data/005.delta.gz",
+      "payload_sha256": "86352e51aebbe352612f62b2a3c5598c35d3f4681a72a23a52fcad0a819db932"
+    },
+    {
+      "path": "AUGGame/Episode.dat",
+      "source_sha256": "bb8b21512ab1b4009371346b71ec39da4777f600b1fadea732784d54426ded51",
+      "target_sha256": "8ade57e6ea1ec1ee627e0a9a77fa65111625e5658534c204c09a81eed066d77c",
+      "size": 119364,
+      "payload": "data/006.delta.gz",
+      "payload_sha256": "846e1eb1e792eafbbe3715f52c4f2f331ae5777770be11049c4ecfa7cdf6d5eb"
+    },
+    {
+      "path": "AUGMajikoi/Define.dat",
+      "source_sha256": "23886a3b1f0cb984c9afd5c7387bf039454711414ca1d3157b87668d9ff347f6",
+      "target_sha256": "83cbc33ec9bdd656647b0992d7c8e752b18946221d7a601338a7c927271c37b5",
+      "size": 8979,
+      "payload": "data/007.delta.gz",
+      "payload_sha256": "2a9e5e6be10b9f35aee2c37ba41f7088c84d7b140a856054fa7dbc08b91005b5"
+    },
+    {
+      "path": "AUGMajikoi/Event.dat",
+      "source_sha256": "a4184bfafd565eb2d726a09f6f8246b39f0bab8701ed5dbdebc7a49ba65f4e7d",
+      "target_sha256": "cdd50af581620e60a8c79dbd51bc682768ceb72f7aaa033169828cc27ae789e3",
+      "size": 27686,
+      "payload": "data/008.delta.gz",
+      "payload_sha256": "349e948033265590e2e741280d4a353dcaf15130b61ccfe77ef895d4b4ba025e"
+    },
+    {
+      "path": "AUGSysGame/Battle.dat",
+      "source_sha256": "d004523e8fc5b85e37707c44fa1feb5be20683205b22fe3374cf053c6a26d167",
+      "target_sha256": "c668449ce5c684b1dd2eefaa05a766bd44358f9c48d818d4cd4818228479dd11",
+      "size": 1868585,
+      "payload": "data/009.delta.gz",
+      "payload_sha256": "d359003db9122829d37faaf2226a92726a6417d504ee78b04a0f384f590222a8"
+    },
+    {
+      "path": "AUGSysGame/BattleEffect.dat",
+      "source_sha256": "250931aef2e481610278a24e8827ccc7aa5af9c7ed877c5b71d3dbe50c42df94",
+      "target_sha256": "376bc35a20a3fc6c92a377cb3475fa466b21c2bf1a432efedc74c51597c1bc56",
+      "size": 2596850,
+      "payload": "data/010.delta.gz",
+      "payload_sha256": "1af8ab149a5eec736cc39cb119f0b9663d74c42edc7b35a1ae0ca683b48c996c"
+    },
+    {
+      "path": "AUGSysGame/Dialog.dat",
+      "source_sha256": "b0a34f4cbe5fccba59dcffdb5f08ebeabc30f99a7e40ffdd936052f66b4eb7b0",
+      "target_sha256": "1229eaef5910be88ef1d429fb90e6a5a6c8b9ac57a2b4906eea40dea854d53cf",
+      "size": 267177,
+      "payload": "data/011.delta.gz",
+      "payload_sha256": "263766877ac9843eb9b69368656f87cf77e80227c1d2581a1586f29beed314c5"
+    },
+    {
+      "path": "AUGSysGame/List/City.dat",
+      "source_sha256": "1d0e073cf234f4f30a1c075878768de44008b844d5935eae2238d1152b409efb",
+      "target_sha256": "53b4a211921ef76bbe11edd82b6976a02692d094134328b799e7fdca35d1ddd4",
+      "size": 66822,
+      "payload": "data/012.delta.gz",
+      "payload_sha256": "b3c46a5e7f7d8d9eab20c488d46ab0dc4d35a24c7100afb1e1aa2f18b7bdc770"
+    },
+    {
+      "path": "AUGSysGame/List/Common.dat",
+      "source_sha256": "14352d3f07aab7cb17ec10b0b6370313d53f1dc0732d9d2fffc550e1f63e4fd8",
+      "target_sha256": "8e7ab2631a89b8e7f5816b8ba8ac467cc5d0ca51ef25bcf41d3b151500472a8f",
+      "size": 5395863,
+      "payload": "data/013.delta.gz",
+      "payload_sha256": "a1a99378b59f912e8bc7ef63d08954ef141920c5f927f8b66a11a68072c2eff2"
+    },
+    {
+      "path": "AUGSysGame/List/Item.dat",
+      "source_sha256": "65cb8ea96533a94417a0ded9c028b0577e5a04009beb4c7b1d6619554e84ccb6",
+      "target_sha256": "2a76678df56524e747733100744bed96cc529f3c5aeb59dd68ccd866b9d557a8",
+      "size": 201073,
+      "payload": "data/014.delta.gz",
+      "payload_sha256": "9b439e8322d05e1c9af4340f2595325e7d31476497cf870b4c087a3db3f5707e"
+    },
+    {
+      "path": "AUGSysGame/List/Mission.dat",
+      "source_sha256": "0e902a88fe3ae4b890500ed92d146237e51ffde15c2e096555cfac941dccad19",
+      "target_sha256": "35759e31d74ba2d340f580648e1d636431c50b9deb77bbe91b52c3c9f8d61ccf",
+      "size": 87281,
+      "payload": "data/015.delta.gz",
+      "payload_sha256": "a842b63bc79e6662deab7e530b4dc27929c92d116df9f38fe1aef72236a7771a"
+    },
+    {
+      "path": "AUGSysGame/List/Mix.dat",
+      "source_sha256": "5e196215537675263f48ac59849afe5553f5d854d2fdf51fa83854f58bcc8197",
+      "target_sha256": "563be3db7d2facc9a86a2578f14b1887f3e258f21d3a08372bed8af86a783555",
+      "size": 1587284,
+      "payload": "data/016.delta.gz",
+      "payload_sha256": "4e5431ad37fcdcbd9aedfd3a25cc3608710c5c1e582ff76843b479e1ffd1ac78"
+    },
+    {
+      "path": "AUGSysGame/List/Power.dat",
+      "source_sha256": "1e8878ba3b464fbbfccca35895ec1c72aaf99c9571c649794f525f4b0c248582",
+      "target_sha256": "4c75c4a2127e86dab6af9e638df9e58a25d73882a46a2bb25e20ab7d9215cfc4",
+      "size": 164677,
+      "payload": "data/017.delta.gz",
+      "payload_sha256": "c317218c146040e420a04acdc50d2d1df97c59ece2f97f408aee4dd25c84a473"
+    },
+    {
+      "path": "AUGSysGame/List/Shop.dat",
+      "source_sha256": "e273fc909c98945bb89b33f357a515a29426cb59940ef07c9963e28fccae89b7",
+      "target_sha256": "9c6b7ea47d20f4a05c783d2ec8c51f6e432ec077392560e341d130319b4460a2",
+      "size": 1654268,
+      "payload": "data/018.delta.gz",
+      "payload_sha256": "ab0fe4b69a6afa2a0ead15d39a755d2add8bcfe6bd97cfded56052555734d0dd"
+    },
+    {
+      "path": "AUGSysGame/List/Unit.dat",
+      "source_sha256": "ba5b36eb74a69028dec8faf7485178c77cc4b5ebe5d3e134b23e6f8d6699f879",
+      "target_sha256": "e4f995aeba8515f05c90b493ab94061524a5eb4119d537e70507c4856b53771c",
+      "size": 347983,
+      "payload": "data/019.delta.gz",
+      "payload_sha256": "1eefe90c74e43b27c7f01856d9953c445efef6227d40e47d34153c45cdc67ae5"
+    },
+    {
+      "path": "AUGSysGame/Map.dat",
+      "source_sha256": "4595408c97ef3fcabd9336c9ada7de893416454fce6bcc105f65e51ba89d90aa",
+      "target_sha256": "1e083d4ac0ac6163dda9ba3628636ba61265073aefe18f42830ea8edef4f1596",
+      "size": 11050951,
+      "payload": "data/020.delta.gz",
+      "payload_sha256": "09719010cb80e6a7e809c923b2059d4bc67f55d0bb14852b5d8df037ee371038"
+    },
+    {
+      "path": "AUGSysGame/Mission.dat",
+      "source_sha256": "cc08f4facf2f6fc40ddb6f9fc9728146560c8525326bfa14dbc56dc7a60562be",
+      "target_sha256": "f4d07c53049a4c9075a611156bff1b688de7856634d101a6616412cd6104b60f",
+      "size": 387581,
+      "payload": "data/021.delta.gz",
+      "payload_sha256": "48a202d2c9d14ccdf6754ec23c571ac5560477ede54cfcb5bf4dede0faf08fbd"
+    },
+    {
+      "path": "AUGSysGame/ModeSelect.dat",
+      "source_sha256": "73f071c145b446a5786f148aeeada481663ec6296682e480a3249d2272e0ec83",
+      "target_sha256": "3f5c63935fee1c9834e4c46b15692423527257c964de5b6c2fa6d8bc216a41e0",
+      "size": 2394449,
+      "payload": "data/022.delta.gz",
+      "payload_sha256": "86551cfee8b638ae8ca3e7abfeb2d99538cb25ef145f2f69820dec95343cc134"
+    },
+    {
+      "path": "AUGSysGame/Script.dat",
+      "source_sha256": "8f04362966e09fc286e018df5846bf8aae78537bcb176f8782aedda102796ba9",
+      "target_sha256": "e2ddd8f2b449cafdb0b4366d496c45278333bbd396a8fc4169ff7a3371aac004",
+      "size": 297796,
+      "payload": "data/023.delta.gz",
+      "payload_sha256": "00a9f24565a2f0e71c9918a8a231478debb4964eabf64cb45d61ed0ace4627cb"
+    },
+    {
+      "path": "AUGSysGame/Spot.dat",
+      "source_sha256": "ead388e65ee1a464f3077d9b89529ce180ba35007c97fda10097ac1ed2e81e18",
+      "target_sha256": "286a6b7a1806cd30f3b61e94844540b2b857b041ac863373ddf636d93e7f76b2",
+      "size": 771873,
+      "payload": "data/024.delta.gz",
+      "payload_sha256": "7b55bf7be0b0c3c92974a9f820d51cc1701274497a9337a4b16dd394977edf67"
+    },
+    {
+      "path": "AUGSysMain/Adventure.dat",
+      "source_sha256": "2f7e2b50567d246eb776d730c51d4764fbc13eccbbfc2f09446f183520be64e3",
+      "target_sha256": "266a73111bf2b4bad7c5a9a9243e682b71738edae49baf44632a0ce1bf485d7a",
+      "size": 221165,
+      "payload": "data/025.delta.gz",
+      "payload_sha256": "32e1290c0f531b47fa2c912ba2eb214722ed16b3e16047fc6790ee41df9f6c9e"
+    },
+    {
+      "path": "AUGSysMain/BackLog.dat",
+      "source_sha256": "9df7ff556c26117bcadaf998cdaf1138fede85ddc999e183c7396c97413b56b1",
+      "target_sha256": "14d2d46acdb2db396a430397f8b3deab9469c1d84ea70db618e8d3574c1433e8",
+      "size": 347483,
+      "payload": "data/026.delta.gz",
+      "payload_sha256": "bbb2fd735ba9143056d0c31c10bb4844eca593d9137914e40ef76b249b987e57"
+    },
+    {
+      "path": "AUGSysMain/Config.dat",
+      "source_sha256": "18580f254f4a101a74fa123562a49fbf49d3e456026a1410bd67e0e43dea34cc",
+      "target_sha256": "c2d1a3fe16a4547eb0d9ed1cf196726416fefb979412c57038da4d6bdbb9a77e",
+      "size": 1304066,
+      "payload": "data/027.delta.gz",
+      "payload_sha256": "06b339e5b6628f13e0755e7105b1a129e463c937076bef020eab4aebe3db8eae"
+    },
+    {
+      "path": "AUGSysMain/Dialog.dat",
+      "source_sha256": "a388bc1f6cb83c41d1713dc19ebc945a965b2d734103ac009e8cdccafd7f743f",
+      "target_sha256": "69ade49e6e01845592180fcac789aae796e28d17a2af392067a5f456469b4802",
+      "size": 150711,
+      "payload": "data/028.delta.gz",
+      "payload_sha256": "db1d218626dc3558be4c072beb3d76b169605f61266e4a3f80407dc74618150c"
+    },
+    {
+      "path": "AUGSysMain/Gallery.dat",
+      "source_sha256": "a2df817bbbe6adafc2d03429125a5036529133ec70a90a672caf3078c82ec1f9",
+      "target_sha256": "ed9b25b4c92eec315e6d491119ed608eee20f5c8212efd3a6993acbbbd4f137a",
+      "size": 2603588,
+      "payload": "data/029.delta.gz",
+      "payload_sha256": "05117f3a69dd0528a2e24e1204899578e092eadf827dd38f497cf111a297f621"
+    },
+    {
+      "path": "AUGSysMain/GoodBye.dat",
+      "source_sha256": "fe2bfb3c7b082ad40410bd6da41d25efc0058aa11688c53d76c6c580868706f6",
+      "target_sha256": "6fed823b34ab33a3c712bced631efffad35c35c11dd61ec943239a00ca8b3af3",
+      "size": 35484,
+      "payload": "data/030.delta.gz",
+      "payload_sha256": "72be4be8c381b917725cb17ff41fbec26a6dc99541b081e7fee6fc65ecbf23a8"
+    },
+    {
+      "path": "AUGSysMain/Menu.dat",
+      "source_sha256": "165838a376d76b21ccdf0f8facdd18b53c3a3ee00e29ab8cbbe866739a878cd4",
+      "target_sha256": "9a3a59a4c6a6f136aefc7be8acbe9512543d25d665690a98e47a5772bd253dd9",
+      "size": 73935,
+      "payload": "data/031.delta.gz",
+      "payload_sha256": "202086b3349e0929646a75b02dd99fd35a797a6d11adf20725eff51a742066dd"
+    },
+    {
+      "path": "AUGSysMain/SaveLoad.dat",
+      "source_sha256": "cab5a013663bcb3753a6814670a030870498eeb9921db6f4cfeb09e2d77a2362",
+      "target_sha256": "ceb9bb7d09f3551a714dde0aba4faff6bc162cfe0d2fe8ca85f68cff2bd408fc",
+      "size": 1076180,
+      "payload": "data/032.delta.gz",
+      "payload_sha256": "5b339caaf9f1014448cdb24f9af8e6c02c492d4c9ee038a949e8670396fab6db"
+    },
+    {
+      "path": "AUGSysMain/Script.dat",
+      "source_sha256": "90b3f1ed5cd024c48585bcd42b1b97c3585180bc2b0dcc6e978cad1470b559d6",
+      "target_sha256": "447cce7cb4f6b46df3597c55d2fc439d1a226256825b18a63df62ab525b0c7bb",
+      "size": 77708,
+      "payload": "data/033.delta.gz",
+      "payload_sha256": "24061b31166882cf20853fa8426aa56ffe9d3bd15d28db9866eff35436509aba"
+    },
+    {
+      "path": "AUGSysMain/SelectBonus.dat",
+      "source_sha256": "22b1f1d6c072a2c258945716220c70ec4be8717499237ac432a37fdf224001f2",
+      "target_sha256": "e0c780e58ae7e47e6459cf72e9b0ef8f5030180d7f01a39369ef0d623f595ed8",
+      "size": 1834892,
+      "payload": "data/034.delta.gz",
+      "payload_sha256": "6c84a485287e107a80d3487817253a5703b368f9ec2d5f91c88fab2d26d23b57"
+    },
+    {
+      "path": "AUGSysMain/Title.dat",
+      "source_sha256": "9fe88cd2d628e45f77090638a9521312e1f4f03862051b541bc2f27e6ba90e4f",
+      "target_sha256": "deb71685026b808979f2c0c3790537d08c82c4e936ff013defa7e91c9774f55f",
+      "size": 5746276,
+      "payload": "data/035.delta.gz",
+      "payload_sha256": "00fa1f41b3168213bd04c3d045f1d54753df892c5f31307d838e4f77e3b0357d"
+    },
+    {
+      "path": "EiyuSenkiGold.exe",
+      "source_sha256": "49d9278f64cf393929b082a6b925c533ace00dd0d75aff4ece80fca961be6212",
+      "target_sha256": "96d024c705437c56f69ce9bd64ddb10d122d92322dd71531ba31d25741a87fb2",
+      "size": 6165504,
+      "payload": "data/036.delta.gz",
+      "payload_sha256": "35e0271c2dfc7eca372c49e161143fb2d8180cf8e972ee9504ae6d45c393839b"
+    },
+    {
+      "path": "System.dat",
+      "source_sha256": "88bdbcc52d861724dd22fb46b5019fba0d82957b493e454735a106891ead84f6",
+      "target_sha256": "d3275e57af89dee408bc6568798572b13561251f7b842fa05f0e81ef1990fe7a",
+      "size": 77222892,
+      "payload": "data/037.delta.gz",
+      "payload_sha256": "0d5cc7ffff082096dc3ce4e39493aee2fa1110aed023ba07ac76781542ff52db"
+    },
+    {
+      "path": "EiyuKoreanInput.dll",
+      "source_sha256": null,
+      "target_sha256": "3afebdd1334f9a0a6c9c5126e9bb84d0316590f838d23c7a381f08f08bbf592d",
+      "size": 254976,
+      "payload": "data/038.delta.gz",
+      "payload_sha256": "544ad29d83c85b9cac2c650387da235f7b533647bb9f5253b31f314c64df7466"
+    }
+  ],
+  "fonts": [
+    {
+      "family": "ESGKRMapAnitoLex",
+      "filename": "ESGKR-AnitoL-ex-Mapped-UIv2.ttf",
+      "sha256": "cb1b5b69abe297313a3ae7aaee05f5c7d8a4b5c145af367a8afb2d51446eca52"
+    },
+    {
+      "family": "ESGKRMapAnitoM",
+      "filename": "ESGKR-AnitoM-Mapped-UIv2.ttf",
+      "sha256": "d2f7537445a568765972942c767181b392d2c86529058a188cf72da02a3f7633"
+    },
+    {
+      "family": "ESGKRMapEiyuSenkiGoldKR",
+      "filename": "ESGKR-EiyuSenkiGoldKR-Mapped-UIv2.ttf",
+      "sha256": "2aae1f727257b313f212fc4cb2795ace0e9ed1f80b0be7032aab4669c16480d0"
+    },
+    {
+      "family": "ESGKRMapG",
+      "filename": "ESGKR-G-Mapped-UIv2.ttf",
+      "sha256": "2f2155c9e891c0c327bb4904653108ecaee44e5acdd1094ef6840365ff00edb9"
+    },
+    {
+      "family": "ESGKRMapHummingStdB",
+      "filename": "ESGKR-HummingStdB-Mapped-UIv2.ttf",
+      "sha256": "ddbfd93447aa6a0fb31ac52bbdbd6b8c6a01830ac98b7fea28a2557f22462884"
+    },
+    {
+      "family": "ESGKRMapSuraProB",
+      "filename": "ESGKR-SuraProB-Mapped-UIv2.ttf",
+      "sha256": "a371c3260f1b15fd431d50d44fb16af65313a72ced0d82d2f1afd85b97793da3"
+    },
+    {
+      "family": "ESGKRMapSuraProEB",
+      "filename": "ESGKR-SuraProEB-Mapped-UIv2.ttf",
+      "sha256": "49a3ffa8d84b65eca2dbb0af50b350f9c83eeefb0edd68822faa043aea821c12"
+    },
+    {
+      "family": "ESGKRMapSuraProUB",
+      "filename": "ESGKR-SuraProUB-Mapped-UIv2.ttf",
+      "sha256": "0c15377b761969a5fe97817b37e82e8cc9ef01e989bdccf0cf5cfcd048c12c90"
+    }
+  ]
+}
