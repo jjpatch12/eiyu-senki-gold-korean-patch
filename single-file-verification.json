@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "single_bat_sha256": "a41771bc006a7b0f724d3af09265403b7cfbe2d3c3e08e290cec83f6a85ce0ce",
+  "bytes": 36241660,
+  "checks": [
+    "BAT launched via cmd.exe",
+    "embedded payload hash and ZIP integrity",
+    "standalone install",
+    "all 39 target hashes",
+    "restore original hashes",
+    "Korean and spaced paths",
+    "private name-map preserved",
+    "temporary payload removed",
+    "embedded readme and font licenses"
+  ]
+}
