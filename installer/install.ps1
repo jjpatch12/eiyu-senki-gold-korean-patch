@@ -20,6 +20,130 @@ function SafePath([string]$root,[string]$rel) {
 }
 function Parent([string]$p) { [void][IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($p)) }
 function SaveJson($data,[string]$p) { $data | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $p -Encoding UTF8 }
+function AddGameCandidate([string]$path) {
+    if([string]::IsNullOrWhiteSpace($path)){return}
+    try {
+        $expanded=[Environment]::ExpandEnvironmentVariables($path.Trim().Trim('"'))
+        $full=[IO.Path]::GetFullPath($expanded).TrimEnd('\')
+        if($full -match '(?i)\\_korean_patch_backup(?:\\|$)'){return}
+        if((Test-Path -LiteralPath (Join-Path $full 'EiyuSenkiGold.exe')) -and $script:candidateSeen.Add($full)){
+            [void]$script:candidatePaths.Add($full)
+        }
+    } catch {}
+}
+function AddCommonRoot([string]$root) {
+    if([string]::IsNullOrWhiteSpace($root)){return}
+    AddGameCandidate $root
+    AddGameCandidate (Join-Path $root 'Eiyu Senki Gold')
+    AddGameCandidate (Join-Path $root 'Games\Eiyu Senki Gold')
+    AddGameCandidate (Join-Path $root 'Steam\steamapps\common\Eiyu Senki Gold')
+    AddGameCandidate (Join-Path $root 'SteamLibrary\steamapps\common\Eiyu Senki Gold')
+}
+function SelectSupportedGame($manifest) {
+    $exe=$manifest.files | Where-Object path -eq 'EiyuSenkiGold.exe' | Select-Object -First 1
+    foreach($candidate in $script:candidatePaths){
+        try {
+            if($TestMode -and -not (Test-Path -LiteralPath (Join-Path $candidate '.esgkr-test-target'))){continue}
+            $digest=Hash (Join-Path $candidate 'EiyuSenkiGold.exe')
+            if($digest -eq $exe.source_sha256 -or $digest -eq $exe.target_sha256){return $candidate}
+        } catch {}
+    }
+    return $null
+}
+function FindGame($manifest) {
+    $script:candidatePaths=New-Object 'System.Collections.Generic.List[string]'
+    $script:candidateSeen=New-Object 'System.Collections.Generic.HashSet[string]' ([StringComparer]::OrdinalIgnoreCase)
+    # Highest priority: BAT location and current directory.
+    AddGameCandidate $env:ESGKR_LAUNCHER_DIR
+    AddGameCandidate ([Environment]::CurrentDirectory)
+    if(-not $TestMode){
+        try {
+            $saved=Get-ItemProperty -LiteralPath 'HKCU:\Software\EiyuSenkiGoldKoreanPatch' -Name GamePath
+            AddGameCandidate ([string]$saved.GamePath)
+        } catch {}
+    }
+    $userRoots=@(
+        [Environment]::GetFolderPath('Desktop'),
+        [Environment]::GetFolderPath('MyDocuments'),
+        $env:USERPROFILE
+    )
+    try {
+        $shell=Get-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders'
+        $downloads=$shell.PSObject.Properties['{374DE290-123F-4565-9164-39C4925E467B}']
+        if($null -ne $downloads){$userRoots+=,[Environment]::ExpandEnvironmentVariables([string]$downloads.Value)}
+    } catch {}
+    foreach($root in $userRoots){AddCommonRoot $root}
+    foreach($root in @($env:SystemDrive+'\Games',$env:ProgramFiles,${env:ProgramFiles(x86)})){AddCommonRoot $root}
+    # Installed-program records are faster and safer than scanning entire drives.
+    foreach($uninstall in @(
+        'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall',
+        'HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall',
+        'HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall')){
+        if(-not (Test-Path -LiteralPath $uninstall)){continue}
+        foreach($key in Get-ChildItem -LiteralPath $uninstall -ErrorAction SilentlyContinue){
+            try {
+                $entry=Get-ItemProperty -LiteralPath $key.PSPath
+                if(([string]$entry.DisplayName) -match '(?i)Eiyu\s*Senki.*Gold|英雄戦姫.*GOLD'){
+                    AddGameCandidate ([string]$entry.InstallLocation)
+                    if($entry.DisplayIcon){AddGameCandidate ([IO.Path]::GetDirectoryName(([string]$entry.DisplayIcon).Trim('"')))}
+                }
+            } catch {}
+        }
+    }
+    # Steam install and additional library locations.
+    $steamRoots=@()
+    foreach($steamKey in @('HKCU:\Software\Valve\Steam','HKLM:\Software\WOW6432Node\Valve\Steam')){
+        try {
+            $entry=Get-ItemProperty -LiteralPath $steamKey
+            foreach($name in @('SteamPath','InstallPath')){
+                $prop=$entry.PSObject.Properties[$name]
+                if($null -ne $prop -and $prop.Value){$steamRoots+=,[string]$prop.Value}
+            }
+        } catch {}
+    }
+    foreach($steam in $steamRoots){
+        AddGameCandidate (Join-Path $steam 'steamapps\common\Eiyu Senki Gold')
+        $vdf=Join-Path $steam 'steamapps\libraryfolders.vdf'
+        if(Test-Path -LiteralPath $vdf){
+            foreach($line in Get-Content -LiteralPath $vdf -ErrorAction SilentlyContinue){
+                if($line -match '^\s*"path"\s*"([^"]+)"'){
+                    $library=$matches[1].Replace('\\','\')
+                    AddGameCandidate (Join-Path $library 'steamapps\common\Eiyu Senki Gold')
+                }
+            }
+        }
+    }
+    $supported=SelectSupportedGame $manifest
+    if($supported){return $supported}
+    # Final fallback: locate the game anywhere on connected local drives.
+    # 'where /r' is substantially faster than recursive PowerShell enumeration.
+    $scanRoots=@()
+    if($TestMode -and $env:ESGKR_TEST_SCAN_ROOT){
+        $scanRoots+=,[IO.Path]::GetFullPath($env:ESGKR_TEST_SCAN_ROOT)
+    } else {
+        foreach($drive in [IO.DriveInfo]::GetDrives()){
+            try {
+                if($drive.IsReady -and $drive.DriveType -in @([IO.DriveType]::Fixed,[IO.DriveType]::Removable)){
+                    $scanRoots+=,$drive.RootDirectory.FullName
+                }
+            } catch {}
+        }
+    }
+    $where=Join-Path $env:SystemRoot 'System32\where.exe'
+    foreach($root in $scanRoots){
+        Write-Host "게임 자동 검색 중: $root"
+        try {
+            $found=@(& $where /r $root 'EiyuSenkiGold.exe' 2>$null)
+            foreach($exePath in $found){
+                if(Test-Path -LiteralPath $exePath -PathType Leaf){AddGameCandidate ([IO.Path]::GetDirectoryName($exePath))}
+            }
+        } catch {}
+        $supported=SelectSupportedGame $manifest
+        if($supported){return $supported}
+    }
+    if($script:candidatePaths.Count){throw '게임 실행 파일은 찾았지만 지원하는 원본 또는 v0.9.0 파일이 아닙니다.'}
+    throw '연결된 로컬 드라이브에서 지원하는 Eiyu Senki Gold를 찾지 못했습니다.'
+}
 function Closed {
     if(Get-Process -Name EiyuSenkiGold -ErrorAction SilentlyContinue){throw '게임을 완전히 종료한 뒤 다시 실행해 주세요.'}
 }
@@ -59,13 +183,9 @@ function RestoreState($state,[string]$backup,[bool]$checkCurrent) {
     NotifyFonts
 }
 try {
+    $m=Get-Content -LiteralPath (Join-Path $PSScriptRoot 'manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
     if(-not $GamePath){
-        Add-Type -AssemblyName System.Windows.Forms
-        $dialog=New-Object System.Windows.Forms.FolderBrowserDialog
-        $dialog.Description='EiyuSenkiGold.exe가 있는 게임 폴더를 선택하세요.'
-        $dialog.ShowNewFolderButton=$false
-        if($dialog.ShowDialog() -ne 'OK'){exit 1}
-        $GamePath=$dialog.SelectedPath
+        $GamePath=FindGame $m
     }
     $game=(Resolve-Path -LiteralPath $GamePath).Path
     if(-not (Test-Path -LiteralPath (Join-Path $game 'EiyuSenkiGold.exe'))){throw '게임 실행 파일이 없는 폴더입니다.'}
@@ -76,6 +196,7 @@ try {
     $reg='HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Fonts'
     $fontRoot=Join-Path $env:LOCALAPPDATA 'Microsoft\Windows\Fonts'
     if($TestMode){$reg='HKCU:\Software\ESGKRInstallerTests\Fonts';$fontRoot=Join-Path $game '_testfonts'}
+    Write-Host "게임 폴더 자동 인식: $game"
     if($Mode -eq 'Restore'){
         $candidates=@(Get-ChildItem -LiteralPath (Join-Path $game '_korean_patch_backup') -Directory | Where-Object Name -Like 'v0.9.0_*' | Sort-Object Name -Descending)
         $chosen=$null
@@ -89,7 +210,6 @@ try {
         Write-Host '설치 직전 상태로 복구했습니다. 세이브와 한글 이름 정보는 유지했습니다.'
         exit 0
     }
-    $m=Get-Content -LiteralPath (Join-Path $PSScriptRoot 'manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
     $pending=@()
     # Complete preflight before touching installed files or fonts.
     foreach($f in $m.files){
@@ -156,6 +276,10 @@ try {
         }
         NotifyFonts
         $state.status='complete';SaveJson $state (Join-Path $backup 'state.json')
+        if(-not $TestMode){
+            if(-not (Test-Path -LiteralPath 'HKCU:\Software\EiyuSenkiGoldKoreanPatch')){New-Item -Path 'HKCU:\Software\EiyuSenkiGoldKoreanPatch' -Force | Out-Null}
+            Set-ItemProperty -LiteralPath 'HKCU:\Software\EiyuSenkiGoldKoreanPatch' -Name GamePath -Value $game
+        }
     } catch {
         $installError=$_
         RestoreState ([pscustomobject]$state) $backup $false

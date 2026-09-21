@@ -1,7 +1,7 @@
 {
   "passed": true,
-  "single_bat_sha256": "c2f5a993e7df6b792769476a2da5147b616c1ea74d885c949e87f8cc80cdb7e8",
-  "bytes": 36238441,
+  "single_bat_sha256": "be78db82e08cd462a87394def3e522004c7f08c75ff6a6dcbd349fe810728423",
+  "bytes": 36241108,
   "checks": [
     "BAT launched via cmd.exe",
     "embedded payload hash and ZIP integrity",
@@ -10,6 +10,8 @@
     "restore original hashes",
     "Korean and spaced paths",
     "private name-map preserved",
+    "full-search automatic game-folder detection with BAT in unrelated directory",
+    "no folder picker",
     "temporary payload removed",
     "installer UI limited to install and restore"
   ]

@@ -2,6 +2,7 @@ $ErrorActionPreference='Stop'
 $exitCode=1
 $scratch=$null
 try {
+    $env:ESGKR_LAUNCHER_DIR=[IO.Path]::GetDirectoryName($env:ESGKR_SELF)
     $self=[IO.File]::ReadAllText($env:ESGKR_SELF,[Text.Encoding]::UTF8)
     $data=($self -split '(?m)^#DATA-BEGIN\r?$',2)[1]
     $bytes=[Convert]::FromBase64String($data.Trim())
@@ -28,8 +29,12 @@ try {
         }
     } finally {$archive.Dispose();$memory.Dispose()}
     $automated=$env:ESGKR_TEST_TARGET
+    $autoTest=$env:ESGKR_TEST_AUTODETECT
     if($automated){
         if(-not (Test-Path -LiteralPath (Join-Path $automated '.esgkr-test-target'))){throw 'Test marker missing.'}
+        $mode=$env:ESGKR_TEST_ACTION
+    } elseif($autoTest){
+        if(-not (Test-Path -LiteralPath (Join-Path $env:ESGKR_LAUNCHER_DIR '.esgkr-test-target'))){throw 'Test marker missing.'}
         $mode=$env:ESGKR_TEST_ACTION
     } else {
         Write-Host ''
@@ -43,6 +48,9 @@ try {
         $argsList=@('-NoProfile','-ExecutionPolicy','Bypass','-File',(Join-Path $scratch 'install.ps1'))
         if($automated){
             $argsList+=@('-GamePath',$automated,'-TestMode')
+            if($mode -eq 'Verify'){$argsList+='-VerifyOnly';$mode='Install'}
+        } elseif($autoTest){
+            $argsList+='-TestMode'
             if($mode -eq 'Verify'){$argsList+='-VerifyOnly';$mode='Install'}
         }
         if($mode -notin @('Install','Restore')){throw 'Invalid mode.'}
