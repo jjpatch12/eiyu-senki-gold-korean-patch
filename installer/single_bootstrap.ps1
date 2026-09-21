@@ -34,20 +34,12 @@ try {
     } else {
         Write-Host ''
         Write-Host 'Eiyu Senki Gold 한국어 패치 v0.9.0'
-        Write-Host '1. 패치 설치'
-        Write-Host '2. 설치 전 상태로 복구'
-        Write-Host '3. 사용법 / 패치 범위 보기'
-        Write-Host '4. 글꼴 라이선스 보기'
-        Write-Host '0. 종료'
+        Write-Host '1. 한글패치 설치'
+        Write-Host '2. 원본 복원'
         $choice=Read-Host '번호를 선택하세요 (Enter: 설치)'
-        $mode=switch($choice){'2'{'Restore'} '3'{'Readme'} '4'{'License'} '0'{'Exit'} ''{'Install'} '1'{'Install'} default{throw '잘못된 선택입니다.'}}
+        $mode=switch($choice){'2'{'Restore'} ''{'Install'} '1'{'Install'} default{throw '1 또는 2를 선택해 주세요.'}}
     }
-    if($mode -eq 'Readme' -or $mode -eq 'License'){
-        $names=if($mode -eq 'Readme'){@('README.md')}else{@('FONT-NOTICE.txt','OFL.txt')}
-        foreach($name in $names){Write-Host ([IO.File]::ReadAllText((Join-Path $scratch $name),[Text.Encoding]::UTF8))}
-        $exitCode=0
-    } elseif($mode -eq 'Exit'){$exitCode=0}
-    else {
+    if($mode -in @('Install','Restore','Verify')){
         $argsList=@('-NoProfile','-ExecutionPolicy','Bypass','-File',(Join-Path $scratch 'install.ps1'))
         if($automated){
             $argsList+=@('-GamePath',$automated,'-TestMode')
@@ -57,7 +49,7 @@ try {
         $argsList+=@('-Mode',$mode)
         & (Join-Path $PSHOME 'powershell.exe') @argsList
         $exitCode=$LASTEXITCODE
-    }
+    } else {throw 'Invalid mode.'}
 } catch {Write-Host ('오류: '+$_.Exception.Message) -ForegroundColor Red}
 finally {
     if($scratch -and [IO.Directory]::Exists($scratch)){
